@@ -10,7 +10,7 @@ import pages.AppointmentPage;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.ConfigReader;
-import utils.DataProviderClass;
+import utils.DataProviderClas;
 
 
 @Listeners(listeners.TestListener.class)
