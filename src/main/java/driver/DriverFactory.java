@@ -2,11 +2,8 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import utils.ConfigReader;
 
 public class DriverFactory {
 
@@ -16,29 +13,9 @@ public class DriverFactory {
 
         if (driver.get() == null) {
 
-            ConfigReader config = new ConfigReader();
-            String browser = config.getBrowser();
+            WebDriverManager.chromedriver().setup();
 
-            switch (browser.toLowerCase()) {
-
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver.set(new ChromeDriver());
-                    break;
-
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver.set(new EdgeDriver());
-                    break;
-
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver.set(new FirefoxDriver());
-                    break;
-
-                default:
-                    throw new RuntimeException("Invalid Browser Name: " + browser);
-            }
+            driver.set(new ChromeDriver());
 
             driver.get().manage().window().maximize();
         }
@@ -46,9 +23,11 @@ public class DriverFactory {
         return driver.get();
     }
 
+
     public static void quitDriver() {
 
         if (driver.get() != null) {
+
             driver.get().quit();
             driver.remove();
         }
