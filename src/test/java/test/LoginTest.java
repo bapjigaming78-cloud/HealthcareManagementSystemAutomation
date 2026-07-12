@@ -70,5 +70,5 @@ public class LoginTest extends BaseTest {
         System.out.println("Current URL : " + driver.getCurrentUrl());
         System.out.println(ExcelUtils.getCellData(1, 0));
         System.out.println(ExcelUtils.getCellData(1, 1));}
-    org.testng.Assert.fail("Testing Retry Analyzer");
+    //.testng.Assert.fail("Testing Retry Analyzer");
 }}
